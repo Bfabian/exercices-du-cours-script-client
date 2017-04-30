@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <title>Exercices du cours Script client</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Exercices du cours Script client</h1>
+        <h2>Javascript</h2>
+        <h3 id="titre">JS - Interactivité</h3>
+        
+            <nav>
+                <ul>
+                    <li><a href="#" id="lien1">Lance un alert "coucou"</a></li>
+                    <li><a href="#" id="lien2">Change le paragraphe par Bonjour</a></li>
+                    <li><a href="#" id="lien3">Change le paragraphe par votre prénom que vous aurez indiqué dans un window.prompt</a></li>
+                    <li><a href="#" id="lien4">y a t'il un a dans votre prénom? </a></li>
+                </ul>                
+            </nav>
+            <p id="para1">coucou</p>
+            <script>
+                document.getElementById('lien1').onclick = function(){
+                    //instructions qui doivent être exécutées
+                    window.alert('coucou');
+                };
+                //Un click sur le lien 2 mais 'oufti !' dans para1
+                document.getElementById('lien2').onclick = function(){
+                    document.getElementById('para1').innerHTML='Bonjour'; 
+                };
+                // un click sur le lien 3 change le contenu de para 1 
+                // avec comme valeur "votre prenom est : suivi du prenom de l'utilisateur
+                document.getElementById('lien3').onclick = function(){
+                    var prenom = window.prompt('quel est votre prenom?');
+                    document.getElementById('para1').innerHTML='Votre prenom est ' + prenom; 
+                };
+                // Un click sur le lien4 change le titre du document ET 
+                //de la page avec comme contenu:
+                //votre prenom contient(ou ne contien pas la lettre 'a'
+                document.getElementById('lien4').onclick = function(){
+                    var prenom = window.prompt('quel est votre prenom?');
+                    var trouve=prenom.indexOf('a');
+                    var message;
+                    if(trouve != -1){
+                        message = "votre prenom contien la lettre 'a'";
+                    }else{
+                        message = "votre prenom ne contien pas la lettre 'a'";
+                    }
+                        document.tite=message;
+                        document.getElementById('titre').innerHTML = message;
+                    };
+            </script>
+       
+            
+            <nav>
+            <ul>
+                <li><a href="#" id="lien5">Et hop un petit look</a></li>
+                <li><a href="#" id="lien6">Droite</a></li>
+                <li><a href="#" id="lien7">Gauche</a></li>
+                <li><a href="#" id="lien8">Bas</a></li>
+                <li><a href="#" id="lien9">Haut</a></li>
+            </ul>
+        </nav>
+        <p id="para">PARAGRAPHE</p>
+        <script>
+            var chiffre = 300;
+            var chiffreTop = 0;
+            document.getElementById('lien5').onclick = function(){
+               document.getElementById('para').style.display="inligne-block";
+               document.getElementById('para').style.background="red";
+               document.getElementById('para').style.padding="15px";
+               document.getElementById('para').style.width="100px";
+               document.getElementById('para').style.textAlign="center";
+               document.getElementById('para').style.marginLeft=chiffre + 'px';
+               document.getElementById('para').style.marginop=chiffretop+  'px';
+               
+            };
+            document.getElementById('lien6').onclick = function(){
+               chiffre = chiffre + 5;
+               document.getElementById('para').style.marginLeft=chiffre + 'px'; 
+            };
+            document.getElementById('lien7').onclick = function(){
+               chiffre = chiffre - 5;
+               document.getElementById('para').style.marginLeft=chiffre + 'px'; 
+            };
+            document.getElementById('lien8').onclick = function(){
+               chiffreTop = chiffreTop + 5;
+               document.getElementById('para').style.marginTop=chiffreTop + 'px'; 
+            };
+            document.getElementById('lien9').onclick = function(){
+               chiffreTop = chiffreTop - 5;
+               document.getElementById('para').style.marginTop=chiffreTop + 'px'; 
+            };
+        </script>
+        
+         <h1>Apparaitre et disparaitre</h1>
+     
+        <nav id="menu-principal">
+            <ul>
+                <li><a href="#" id="lien10">Apparaitre</a></li>
+                <li><a href="#" id="lien11">Disparaitre</a></li>
+                <li><a href="#" id="lien12">Interupteur</a></li>
+                <li><a href="#" id="lien13">Apparaitre</a></li>
+            </ul>
+        </nav>
+        <p id="para2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, aspernatur, explicabo, atque et sed vero laudantium pariatur aliquid voluptatibus porro fuga tenetur consequuntur aliquam doloremque minus placeat molestias hic saepe!</p>
+      <script>
+        document.getElementById('para2').style.display="none";
+        document.getElementById('lien10').onclick = function(){
+        document.getElementById('para2').style.display="block";
+    };
+        document.getElementById('lien11').onclick = function(){
+        document.getElementById('para2').style.display="none";
+    };
+    document.getElementById('lien12').onclick = function(){
+if(document.getElementById('para2').style.display==="none"){
+    document.getElementById('para2').style.display="block";}
+else{document.getElementById('para2').style.display="none";}   
+};
+
+
+ document.getElementById('lien13').onclick = function(){
+if(document.getElementById('para2').style.display==="none")
+{
+    document.getElementById('para2').style.display="block";
+    document.getElementById('lien13').innerHTML = "Disparaitre";
+}
+else
+{
+    document.getElementById('para2').style.display="none";
+    document.getElementById('lien13').innerHTML = "Apparaitre";
+}   
+};
+           
+           
+    </script>
+    <h1>Menu vertical et sousmenu</h1> 
+    <nav id="menu-principale">
+            <ul>
+                <li>
+                    <a href="#" id="menu1">menu1</a>
+                    <ul id="sous-menu1">
+                        <li><a href="#">sous-menu1</a></li>
+                        <li><a href="#">sous-menu2</a></li>
+                        <li><a href="#">sous-menu3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" id="menu2">menu2</a>
+                    <ul id="sous-menu2">
+                        <li><a href="#">sous-menu1</a></li>
+                        <li><a href="#">sous-menu2</a></li>
+                        <li><a href="#">sous-menu3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" id="menu3">menu3</a>
+                    <ul id="sous-menu3">
+                        <li><a href="#">sous-menu1</a></li>
+                        <li><a href="#">sous-menu2</a></li>
+                        <li><a href="#">sous-menu3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <script>
+            //je defini des variables avec mes objets
+            var sousMenu1 = document.getElementById('sous-menu1');
+            var sousMenu2 = document.getElementById('sous-menu2');
+            var sousMenu3 = document.getElementById('sous-menu3');
+            //j'initialise leur display à 'none'
+            sousMenu1.style.display="none";
+            sousMenu2.style.display="none";
+            sousMenu3.style.display="none";
+            //je crée un interrupeur avec lien 'menu1'
+            //pour afficher ou masquer le sous menu1
+            document.getElementById('menu1').onclick = function(){
+            if(sousMenu1.style.display==="none"){
+                sousMenu1.style.display="block";}
+            else{sousMenu1.style.display="none";}   
+            };
+            //je crée un interrupeur avec lien 'menu2'
+            //pour afficher ou masquer le sous menu2
+            document.getElementById('menu2').onclick = function(){
+            if(sousMenu2.style.display==="none"){
+                sousMenu2.style.display="block";}
+            else{sousMenu2.style.display="none";}   
+            };
+            //je crée un interrupeur avec lien 'menu1'
+            //pour afficher ou masquer le sous menu1
+            document.getElementById('menu3').onclick = function(){
+            if(sousMenu3.style.display==="none"){
+                sousMenu3.style.display="block";}
+            else{sousMenu3.style.display="none";}   
+            };
+            
+            
+        </script>
+    </body>
+</html>
